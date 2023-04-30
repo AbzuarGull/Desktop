@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    
+    <h1>Calculator</h1>
+
+    <input type="text" id="first-number" placeholder="Enter the first number">
+<br><br>
+<input type="text" id="second-number" placeholder="Enter the second number">
+<br><br>
+<input type="text" id="operator" placeholder="Enter the operator (+, -, *, /)">
+<br><br>
+<button onclick="calculate()" >Calculate</button>
+<p id="result"></p>
+
+<script>
+  function calculate() {
+    let input1 = document.getElementById("first-number").value;
+    let input2 = document.getElementById("second-number").value;
+    let operator = document.getElementById("operator").value;
+    let result = document.getElementById("result");
+
+    if (isNaN(Number(input1)) || isNaN(Number(input2))) {
+      result.innerText = "Invalid input. Please enter numbers only.";
+    } else {
+      let num1 = Number(input1);
+      let num2 = Number(input2);
+      let output;
+
+      switch(operator) {
+        case "+":
+          output = num1 + num2;
+          break;
+        case "-":
+          output = num1 - num2;
+          break;
+        case "*":
+          output = num1 * num2;
+          break;
+        case "/":
+          if (num2 === 0) {
+            result.innerText = "Error: division by zero";
+            return;
+          } else {
+            output = num1 / num2;
+          }
+          break;
+        default:
+          result.innerText = "Invalid operator. Please enter a valid operator (+, -, *, /).";
+          return;
+      }
+
+      result.innerText = output;
+    }
+  }
+</script>
+
+
+
+</body>
+</html>
